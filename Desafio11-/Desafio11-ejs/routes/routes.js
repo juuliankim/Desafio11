@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     res.render('Bienvenido al servidor express');
 });
 
-router.get('/productos', (req, res) => {
+router.get('/productos/listar', (req, res) => {
     try {
         res.status(200).send(controller.listar());    
     } catch (error) {
@@ -15,7 +15,7 @@ router.get('/productos', (req, res) => {
     }
 });
 
-router.get('/productos/:id', (req, res) => {
+router.get('/productos/listar/:id', (req, res) => {
     try {
         res.send(controller.listarId(parseInt(req.params.id)));
     } catch (error) {
@@ -23,7 +23,7 @@ router.get('/productos/:id', (req, res) => {
     }
 });
 
-router.post('/productos/guardar/',(req, res)=>{
+router.post('/productos/guardar',(req, res)=>{
     try {
         res.send(controller.guardar(req.body));
     } catch (error) {
@@ -54,8 +54,8 @@ router.delete('/productos/borrar/:id',(req,res)=>{
 
 router.get('/productos/vista', (req, res) => {
     try {
-        const items = controller.listar()
-        res.render('layout', {Products: items});
+        let items = controller.listar()
+        res.render('layout', {productos: items, hayProductos: items.length});
     } catch (error) {
         res.status(500).send(error.message);
     }
