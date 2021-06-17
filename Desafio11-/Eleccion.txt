@@ -1,0 +1,1 @@
+Elijo el EJS, ya que la sintaxis es muy similar a HTML y se puede usar la logica de js en el mismo y tiene etiquetas de plantilla simples(<% %>)
